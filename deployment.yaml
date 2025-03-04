@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplewebapp
+  namespace: testnamespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simplewebapp
+  template:
+    metadata:
+      labels:
+        app: simplewebapp
+    spec:
+      containers:
+      - name: simplewebapp
+        image: simplewebapp:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
